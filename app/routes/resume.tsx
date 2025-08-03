@@ -1,10 +1,9 @@
-import { Link, useNavigate, useParams } from "react-router";
-import { usePuterStore } from "../lib/puter";
 import { useEffect, useState } from "react";
-import type { createFileSessionStorage } from "@react-router/node";
-import Summary from "../components/Summary";
+import { Link, useNavigate, useParams } from "react-router";
 import ATS from "../components/ATS";
 import Details from "../components/Details";
+import Summary from "../components/Summary";
+import { usePuterStore } from "../lib/puter";
 
 export const meta = () => {
   [
@@ -23,7 +22,7 @@ const Resume = () => {
 
   useEffect(() => {
     if (!isLoading && !auth.isAuthenticated)
-      navigate(`/auth?next=/resume${id}`);
+      navigate(`/auth?next=/resume/${id}`);
   }, [isLoading]);
 
   useEffect(() => {
@@ -47,6 +46,7 @@ const Resume = () => {
       setImageUrl(imageUrl);
 
       setFeedback(data.feedback);
+      console.log({ resumeUrl, imageUrl, feedback: data.feedback });
     };
 
     loadResume();
