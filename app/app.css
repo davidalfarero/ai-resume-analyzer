@@ -19,16 +19,47 @@
   --color-badge-yellow-text: #73321b;
 }
 
+:root {
+  --color-bg-gradient: linear-gradient(to bottom, #f0f4ff 60%, #8e97c5);
+  --text: #111111;
+  --primary: #4f46e5;
+  --secondary: #f3f4f6;
+  --border: #e5e7eb;
+  --card: #ffffff;
+}
+
+:root.dark {
+  --color-bg-gradient: linear-gradient(to bottom, #1e1e2f 60%, #2b2b45);
+  --bg: #0f172a;
+  --text: #f8fafc;
+  --primary: #6366f1;
+  --secondary: #1e293b;
+  --border: #334155;
+  --card: #1e293b;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-gradient: linear-gradient(to bottom, #1e1e2f 60%, #2b2b45);
+  }
+} */
+
 html,
 body {
-  @apply bg-white;
+  background: var(--color-bg-gradient);
+  @apply text-black;
+}
+
+:root.dark html,
+:root.dark body {
+  @apply text-white;
 }
 
 main {
   @apply min-h-screen pt-10;
 }
 h1 {
-  @apply max-sm:text-[3rem] text-6xl  text-gradient leading-tight xl:tracking-[-2px] font-semibold;
+  @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
 }
 
 h2 {
