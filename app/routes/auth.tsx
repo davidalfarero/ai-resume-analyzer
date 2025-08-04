@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 export const meta = () => {
   [
-    { title: "Resumind | Auth" },
+    { title: "Analyzr | Auth" },
     { name: "description", content: "Log into your account" },
   ];
 };
