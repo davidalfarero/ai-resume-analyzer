@@ -6,6 +6,14 @@ import { useNavigate } from "react-router";
 import { convertPdfToImage } from "~/lib/pdf2img";
 import { generateUUID } from "~/lib/utils";
 import { prepareInstructions } from "../constants";
+import type { Route } from "./+types/home";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "Analyzr | Upload" },
+    { name: "description", content: "Smart feedback for your dream job!" },
+  ];
+}
 
 const Upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore();
@@ -97,7 +105,7 @@ const Upload = () => {
   }, [auth.isAuthenticated]);
 
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+    <main className="bg-bg-gradient min-h-screen">
       <Navbar />
 
       <section className="main-section">
@@ -118,7 +126,9 @@ const Upload = () => {
               className="flex flex-col gap-4 mt-8"
             >
               <div className="form-div">
-                <label htmlFor="company-name">Company Name</label>
+                <label htmlFor="company-name">
+                  <p className="text-light">Company Name</p>
+                </label>
                 <input
                   type="text"
                   name="company-name"
@@ -127,7 +137,9 @@ const Upload = () => {
                 />
               </div>
               <div className="form-div">
-                <label htmlFor="job-title">Job Title</label>
+                <label htmlFor="job-title">
+                  <p className="text-light">Job Title</p>
+                </label>
                 <input
                   type="text"
                   name="job-title"
@@ -136,7 +148,9 @@ const Upload = () => {
                 />
               </div>
               <div className="form-div">
-                <label htmlFor="job-description">Job Description</label>
+                <label htmlFor="job-description">
+                  <p className="text-light">Job Description</p>
+                </label>
                 <textarea
                   rows={5}
                   name="job-description"
@@ -146,7 +160,9 @@ const Upload = () => {
               </div>
 
               <div className="form-div">
-                <label htmlFor="uploader">Upload Resume</label>
+                <label htmlFor="uploader">
+                  <p className="text-light">Upload Resume</p>
+                </label>
                 <FileUploader onFileSelect={handleFileSelect} />
               </div>
 

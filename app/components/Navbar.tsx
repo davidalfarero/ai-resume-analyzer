@@ -1,42 +1,66 @@
 import { Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router";
+import { usePuterStore } from "../lib/puter";
+import { SignOutModal } from "./SignOutModal";
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
-  const location = useLocation();
+  const { auth } = usePuterStore();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [showSignOutModal, setShowSignOutModal] = useState(false);
 
-  const isAuthPage = location.pathname === "/auth";
+  // Set theme on initial load
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    const initial =
+      stored === "dark" || stored === "light"
+        ? stored
+        : systemPrefersDark
+          ? "dark"
+          : "light";
+    setTheme(initial);
+    document.documentElement.classList.toggle("dark", initial === "dark");
+  }, []);
+
+  // Toggle theme
+  const toggleTheme = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
 
   return (
-    <nav className="navbar">
-      {isAuthPage ? (
-        <div className="cursor-not-allowed">
-          <p className="text-2xl font-bold text-gradient">Analyzr</p>
-        </div>
-      ) : (
+    <>
+      <nav className="navbar">
         <Link to="/">
           <p className="text-2xl font-bold text-gradient">Analyzr</p>
         </Link>
-      )}
 
-      <button
-        className="cursor-pointer"
-        onClick={() => setDarkMode((prev) => !prev)}
-      >
-        {darkMode ? <Sun className="text-yellow-500" /> : <Moon />}
-      </button>
+        <button className="cursor-pointer" onClick={toggleTheme}>
+          {theme === "dark" ? <Sun className="text-yellow-600" /> : <Moon />}
+        </button>
 
-      {isAuthPage ? (
-        <div className="primary-button w-fit cursor-not-allowed">
-          Upload Resume
-        </div>
-      ) : (
-        <Link to="/upload" className="primary-button w-fit">
-          Upload Resume
-        </Link>
+        <button
+          onClick={() => setShowSignOutModal(true)}
+          className="primary-button w-fit"
+        >
+          Sign Out
+        </button>
+      </nav>
+      {showSignOutModal && (
+        <SignOutModal
+          onCancel={() => setShowSignOutModal(false)}
+          onConfirm={() => {
+            auth.signOut();
+            setShowSignOutModal(false);
+          }}
+        />
       )}
-    </nav>
+    </>
   );
 };
 export default Navbar;

@@ -22,27 +22,32 @@
 :root {
   --color-bg-gradient: linear-gradient(to bottom, #f0f4ff 60%, #8e97c5);
   --text: #111111;
+  --textLight: #4b5563;
   --primary: #4f46e5;
   --secondary: #f3f4f6;
   --border: #e5e7eb;
   --card: #ffffff;
+  --dark: #111;
+  --light: #fff;
+  --gradient-from: #ab8c95;
+  --gradient-via: #000000;
+  --gradient-to: #8e97c5;
 }
 
 :root.dark {
   --color-bg-gradient: linear-gradient(to bottom, #1e1e2f 60%, #2b2b45);
-  --bg: #0f172a;
   --text: #f8fafc;
+  --textLight: #d1d5db;
   --primary: #6366f1;
   --secondary: #1e293b;
   --border: #334155;
   --card: #1e293b;
+  --dark: #111;
+  --light: #fff;
+  --gradient-from: #ffd1dc;
+  --gradient-via: #ffffff;
+  --gradient-to: #a0c4ff;
 }
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg-gradient: linear-gradient(to bottom, #1e1e2f 60%, #2b2b45);
-  }
-} */
 
 html,
 body {
@@ -59,11 +64,11 @@ main {
   @apply min-h-screen pt-10;
 }
 h1 {
-  @apply max-sm:text-[3rem] text-6xl text-gradient leading-tight xl:tracking-[-2px] font-semibold;
+  @apply max-sm:text-[3rem] text-6xl leading-tight xl:tracking-[-2px] font-semibold;
 }
 
 h2 {
-  @apply max-sm:text-xl text-3xl text-dark-200;
+  @apply max-sm:text-xl text-3xl;
 }
 
 label {
@@ -82,14 +87,17 @@ form {
 }
 
 @layer components {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+  .text-light {
+    color: var(--textLight);
   }
   .gradient-border {
     @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
   }
   .primary-button {
     @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
+  }
+  .secondary-button {
+    @apply border border-gray-300 dark:border-gray-600 text-black rounded-full px-4 py-2 cursor-pointer w-full;
   }
   .resume-nav {
     @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;

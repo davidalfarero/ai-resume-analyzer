@@ -7,7 +7,7 @@ import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Analyzr" },
+    { title: "Analyzr | Analyze Your Resume" },
     { name: "description", content: "Smart feedback for your dream job!" },
   ];
 }
@@ -41,15 +41,19 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="bg-[url('/images/bg-main.svg')] bg-cover">
+    <main className="bg-bg-gradient">
       <Navbar />
       <section className="main-section">
         <div className="page-heading py-16">
           <h1>Track Your Applications & Resume Ratings</h1>
           {!loadingResumes && resumes?.length === 0 ? (
-            <h2>No resumes found. Upload your first resume to get feedback.</h2>
+            <h2 className="text-light">
+              No resumes found. Upload your first resume to get feedback.
+            </h2>
           ) : (
-            <h2>Review your submissions and check AI-powered feedback.</h2>
+            <h2 className="text-light">
+              Review your submissions and check AI-powered feedback.
+            </h2>
           )}
         </div>
 
