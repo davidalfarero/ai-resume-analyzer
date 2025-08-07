@@ -29,9 +29,11 @@
   --card: #ffffff;
   --dark: #111;
   --light: #fff;
-  --gradient-from: #ab8c95;
-  --gradient-via: #000000;
-  --gradient-to: #8e97c5;
+  --gradient-from: #78c0ff;
+  --gradient-via: #111;
+  --gradient-to: #a3bffa;
+  --card-gradient-from: #bfdbf5;
+  --card-gradient-to: #93b4e5;
 }
 
 :root.dark {
@@ -44,9 +46,11 @@
   --card: #1e293b;
   --dark: #111;
   --light: #fff;
-  --gradient-from: #ffd1dc;
-  --gradient-via: #ffffff;
-  --gradient-to: #a0c4ff;
+  --gradient-from: #78c0ff;
+  --gradient-via: #f8fafc;
+  --gradient-to: #a3bffa;
+  --card-gradient-from: #3669c0;
+  --card-gradient-to: #192637;
 }
 
 html,
@@ -90,8 +94,8 @@ form {
   .text-light {
     color: var(--textLight);
   }
-  .gradient-border {
-    @apply bg-gradient-to-b from-light-blue-100 to-light-blue-200 p-4 rounded-2xl;
+  .gradient-card {
+    @apply gradient-card p-4 rounded-2xl;
   }
   .primary-button {
     @apply primary-gradient text-white rounded-full px-4 py-2 cursor-pointer w-full;
@@ -160,8 +164,27 @@ form {
   background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
 }
 
-@utility text-gradient {
+@utility navbar-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
+}
+
+@utility gradient-card {
+  background-image: linear-gradient(
+    to bottom,
+    var(--card-gradient-from),
+    var(--card-gradient-to)
+  );
+  @apply p-4 rounded-2xl;
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(
+    to right,
+    var(--gradient-from),
+    var(--gradient-via),
+    var(--gradient-to)
+  );
+  @apply bg-clip-text text-transparent;
 }
 
 @utility gradient-hover {

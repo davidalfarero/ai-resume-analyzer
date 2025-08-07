@@ -110,14 +110,18 @@ const Upload = () => {
 
       <section className="main-section">
         <div className="page-heading py-16">
-          <h1>Smart feedback for your dream job</h1>
+          <h1 className="text-gradient">
+            Intelligent feedback to power your job search
+          </h1>
           {isProcessing ? (
             <>
               <h2>{statusText}</h2>
               <img src="/images/resume-scan.gif" className="w-full" />
             </>
           ) : (
-            <h2>Drop your resume for an ATS score and improvement tips</h2>
+            <h2 className="text-light">
+              Drop your resume for an ATS score and improvement tips
+            </h2>
           )}
           {!isProcessing && (
             <form
@@ -132,8 +136,8 @@ const Upload = () => {
                 <input
                   type="text"
                   name="company-name"
-                  placeholder="Company Name"
                   id="company-name"
+                  className="text-black"
                 />
               </div>
               <div className="form-div">
@@ -143,8 +147,8 @@ const Upload = () => {
                 <input
                   type="text"
                   name="job-title"
-                  placeholder="Job Title"
                   id="job-title"
+                  className="text-black"
                 />
               </div>
               <div className="form-div">
@@ -156,6 +160,7 @@ const Upload = () => {
                   name="job-description"
                   placeholder="Job Description"
                   id="job-description"
+                  className="text-black"
                 />
               </div>
 

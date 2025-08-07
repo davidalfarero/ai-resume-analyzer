@@ -21,7 +21,7 @@ const auth = () => {
 
   return (
     <main className="bg-bg-gradient max-h-screen grid md:grid-cols-2 items-center">
-      <div className=" flex items-center justify-center max-md:hidden">
+      <div className="flex items-center justify-center max-md:hidden">
         <img
           src="/images/auth-logo.png"
           alt="auth logo"
