@@ -108,8 +108,8 @@ const Upload = () => {
     <main className="bg-bg-gradient min-h-screen">
       <Navbar />
 
-      <section className="main-section">
-        <div className="page-heading py-16">
+      <section className="grid md:grid-cols-2">
+        <div className="md:pt-30 text-center">
           <h1 className="text-gradient">
             Intelligent feedback to power your job search
           </h1>
@@ -123,11 +123,14 @@ const Upload = () => {
               Drop your resume for an ATS score and improvement tips
             </h2>
           )}
+        </div>
+
+        <div>
           {!isProcessing && (
             <form
               id="upload-form"
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 mt-8"
+              className="flex flex-col gap-2 mt-8 px-20"
             >
               <div className="form-div">
                 <label htmlFor="company-name">
@@ -137,7 +140,7 @@ const Upload = () => {
                   type="text"
                   name="company-name"
                   id="company-name"
-                  className="text-black"
+                  className="text-black text-md"
                 />
               </div>
               <div className="form-div">
@@ -156,11 +159,10 @@ const Upload = () => {
                   <p className="text-light">Job Description</p>
                 </label>
                 <textarea
-                  rows={5}
+                  rows={4}
                   name="job-description"
-                  placeholder="Job Description"
                   id="job-description"
-                  className="text-black"
+                  className="text-black resize-none"
                 />
               </div>
 
