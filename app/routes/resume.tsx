@@ -4,6 +4,7 @@ import ATS from "../components/ATS";
 import Details from "../components/Details";
 import Summary from "../components/Summary";
 import { usePuterStore } from "../lib/puter";
+import Navbar from "../components/Navbar";
 
 export const meta = () => {
   [
@@ -61,6 +62,7 @@ const Resume = () => {
             Back to Homepage
           </span>
         </Link>
+        <Navbar />
       </nav>
 
       <div className="flex flex-row w-full max-lg:flex-col-reverse">
