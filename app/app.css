@@ -32,14 +32,15 @@
   --gradient-from: #78c0ff;
   --gradient-via: #111;
   --gradient-to: #a3bffa;
-  --card-gradient-from: #bfdbf5;
-  --card-gradient-to: #93b4e5;
+  --card-gradient-from: #bbf7d0; /* green-200 */
+  --card-gradient-to: #4ade80;
+  --card-text-color: #072f24;
 }
 
 :root.dark {
   --color-bg-gradient: linear-gradient(to bottom, #1e1e2f 60%, #2b2b45);
   --text: #f8fafc;
-  --textLight: #1358be;
+  --textLight: #7f8287;
   --primary: #6366f1;
   --secondary: #1e293b;
   --border: #334155;
@@ -49,8 +50,9 @@
   --gradient-from: #78c0ff;
   --gradient-via: #f8fafc;
   --gradient-to: #a3bffa;
-  --card-gradient-from: #3669c0;
-  --card-gradient-to: #192637;
+  --card-gradient-from: #166534; /* green-800 */
+  --card-gradient-to: #052e16;
+  --card-text-color: #f0fdf4;
 }
 
 html,
@@ -94,6 +96,9 @@ form {
   .text-light {
     color: var(--textLight);
   }
+  .card-text {
+    color: var(--card-text-color);
+  }
   .gradient-card {
     @apply gradient-card p-4 rounded-2xl;
   }
@@ -127,31 +132,24 @@ form {
   .resumes-section {
     @apply flex flex-wrap max-md:flex-col max-md:gap-4 gap-6 items-start max-md:items-center w-full max-w-[1850px] justify-evenly;
   }
-
   .resume-card {
     @apply flex flex-col gap-8 h-[560px] w-[350px] lg:w-[430px] xl:w-[490px] bg-white rounded-2xl p-4;
   }
-
   .resume-card-header {
     @apply flex flex-row gap-2 justify-between min-h-[110px] max-sm:flex-col items-center max-md:justify-center max-md:items-center;
   }
-
   .feedback-section {
     @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
   }
-
   .navbar {
     @apply flex flex-row justify-between items-center bg-white rounded-full w-full px-10 py-2 max-w-4xl mx-auto;
   }
-
   .score-badge {
     @apply flex flex-row items-center justify-center py-1 px-2 gap-4 rounded-[96px];
   }
-
   .form-div {
     @apply flex flex-col w-full items-start;
   }
-
   .uplader-drag-area {
     @apply relative p-8 text-center transition-all duration-700 cursor-pointer bg-white rounded-2xl min-h-[208px];
   }
@@ -160,11 +158,7 @@ form {
   }
 }
 
-@utility bg-gradient {
-  background: linear-gradient(to bottom, #f0f4ff 60%, #fa7185cc);
-}
-
-@utility navbar-gradient {
+@utility constant-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-[#AB8C95] via-[#000000] to-[#8E97C5];
 }
 

@@ -37,7 +37,7 @@ const Navbar = () => {
     <>
       <nav className="navbar">
         <Link to="/">
-          <p className="text-xl font-bold navbar-gradient">Analyzr</p>
+          <p className="text-xl font-bold constant-gradient">Analyzr</p>
         </Link>
 
         <button className="cursor-pointer" onClick={toggleTheme}>
