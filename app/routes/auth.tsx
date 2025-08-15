@@ -34,8 +34,8 @@ const auth = () => {
           <section className="flex flex-col gap-8 bg-white dark:bg-secondary rounded-2xl p-10">
             {/* Header Text */}
             <div className="flex flex-col items-center gap-2 text-center">
-              <h1 className="text-gradient text-4xl font-bold">Welcome</h1>
-              <h2 className="text-gradient text-lg font-medium">
+              <h1 className="constant-gradient text-4xl font-bold">Welcome</h1>
+              <h2 className="constant-gradient text-lg font-medium">
                 Get AI-powered feedback on your resume
               </h2>
             </div>
